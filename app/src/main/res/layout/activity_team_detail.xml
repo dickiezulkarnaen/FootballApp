@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.teams.team_detail.TeamDetailActivity">
+
+    <LinearLayout
+        android:id="@+id/layoutHeaderTeam"
+        android:paddingVertical="15dp"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgTeamBadge"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:id="@+id/tvTeamName"
+            android:textColor="#FFFFFF"
+            tools:text="Barcelona"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tvTeamBirth"
+            android:textColor="#FFFFFF"
+            tools:text="1987"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/tvTeamPlace"
+            android:textColor="#FFFFFF"
+            tools:text="Camp Nou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:layout_below="@+id/layoutHeaderTeam"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tabLayoutTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v4.view.ViewPager
+        android:layout_below="@+id/tabLayoutTeam"
+        android:overScrollMode="never"
+        android:id="@+id/vp_team"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>

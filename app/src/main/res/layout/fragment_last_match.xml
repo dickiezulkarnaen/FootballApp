@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    tools:context=".main.matches.lastmatch.LastMatchFragment">
+
+    <Spinner
+        android:layout_margin="10dp"
+        android:id="@+id/spnLastMatchleagues"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/spnLastMatchleagues"
+        android:id="@+id/rvLastMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tvNoResultLastMatch"
+        android:visibility="gone"
+        android:textSize="18sp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/spnLastMatchleagues"
+        android:gravity="center"
+        android:text="No result found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
