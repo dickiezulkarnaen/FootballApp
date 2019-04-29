@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="example.dickiezulkarnaen.com.footballappfinal">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.dickiez.soccerhub">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_CALENDAR"/>
@@ -8,23 +9,31 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_logo"
+        android:label="${appName}"
+        android:debuggable="${debuggable}"
+        android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,HardcodedDebugMode"
+        tools:replace="label">
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d61be1326ca3d60f55695e08edb944dc70a531b2" />
+
         <activity
-            android:name=".main.MainActivity"
-            android:label="@string/app_name">
+            android:name="com.dickiez.soccerhub.MainActivity"
+            android:label="${appName}">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.matches.match_detail.MatchDetailActivity" />
-        <activity android:name=".main.teams.team_detail.TeamDetailActivity" />
-        <activity android:name=".main.teams.team_detail.team_players.player_detail.PlayerDetailActivity"></activity>
+        <activity android:name="com.dickiez.soccerhub.matches.matchdetail.MatchDetailActivity" />
+        <activity android:name="com.dickiez.soccerhub.teams.teamdetail.TeamDetailActivity" />
+        <activity android:name="com.dickiez.soccerhub.teams.teamdetail.teamplayers.playerdetail.PlayerDetailActivity"></activity>
     </application>
 
 </manifest>

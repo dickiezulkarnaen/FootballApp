@@ -4,7 +4,7 @@
     android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.teams.team_detail.team_overview.OverviewFragment">
+    tools:context=".teams.teamdetail.teamoverview.OverviewFragment">
 
     <ScrollView
         android:layout_width="match_parent"

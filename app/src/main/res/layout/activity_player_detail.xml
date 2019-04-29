@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".main.teams.team_detail.team_players.player_detail.PlayerDetailActivity">
+    tools:context=".teams.teamdetail.teamplayers.playerdetail.PlayerDetailActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

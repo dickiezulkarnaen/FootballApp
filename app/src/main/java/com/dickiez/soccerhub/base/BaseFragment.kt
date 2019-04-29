@@ -1,0 +1,30 @@
+package com.dickiez.soccerhub.base
+
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.support.v4.app.Fragment
+import com.dickiez.soccerhub.R
+
+open class BaseFragment : Fragment(), BaseView {
+
+    private var progressDialog: Dialog? = null
+
+    override fun showDialog() {
+        progressDialog = Dialog(context)
+
+        if (!progressDialog!!.isShowing) {
+            progressDialog?.setContentView(R.layout.progress_dialog)
+            progressDialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            progressDialog?.setCancelable(true)
+            progressDialog?.setCanceledOnTouchOutside(false)
+            progressDialog?.show()
+        } else {
+            progressDialog?.dismiss()
+        }
+    }
+
+    override fun hideDialog() {
+        progressDialog?.dismiss()
+    }
+}

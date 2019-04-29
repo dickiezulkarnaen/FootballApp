@@ -1,0 +1,67 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+
+  ## build custom app
+  desc "custom build"
+  lane :build_custom_app do |options|
+
+    appSurfix = ""
+    buildType = ""
+
+    ## define package name
+    ## carane gedigi : fastlane build_custom_app type:debug
+    if options[:type].eql?("debug")
+       appSurfix = ".dev"
+       buildType = "debug"
+       changelog = "Test...test...test..."
+    elsif options[:type].eql?("release")
+       buildType = "release"
+       changelog = "Release...release...release..."
+    end
+
+    gradle(task: "clean assemble", build_type: buildType)
+
+       crashlytics(
+        groups: "TheTesters",
+        notes: "Beta \n" + changelog,
+        api_token: "d61be1326ca3d60f55695e08edb944dc70a531b2",
+        build_secret: "5be50e0e1a9d1f85dda605c8c58fda3dee49fdfc8eeb5678a01fad68f02a117f"
+       )
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Submit a new Beta Build to Crashlytics Beta"
+  lane :beta do
+    gradle(task: "clean assembleRelease")
+    crashlytics
+  
+    # sh "your_script.sh"
+    # You can also use other beta testing services here
+  end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    gradle(task: "clean assembleRelease")
+    upload_to_play_store
+  end
+end

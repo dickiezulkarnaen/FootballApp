@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".main.favorites.FavoritesFragment">
+    tools:context=".favorites.FavoritesFragment">
 
     <android.support.design.widget.TabLayout
         android:layout_marginTop="10dp"
