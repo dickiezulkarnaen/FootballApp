@@ -40,8 +40,8 @@ platform :android do
        crashlytics(
         groups: "TheTesters",
         notes: "Beta \n" + changelog,
-        api_token: "d61be1326ca3d60f55695e08edb944dc70a531b2",
-        build_secret: "5be50e0e1a9d1f85dda605c8c58fda3dee49fdfc8eeb5678a01fad68f02a117f"
+        api_token: ENV['FABRIC_API_KEY'],
+        build_secret: ENV['FABRIC_BUILD_SECRET']
        )
   end
 

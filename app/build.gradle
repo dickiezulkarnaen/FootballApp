@@ -6,11 +6,39 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'io.fabric'
 
+apply plugin: 'com.google.gms.google-services'
+
 ext {
-    version = "${version != 'unspecified' ? version : '1.2.7'}" // edit this for manual version
+    version = "${version != 'unspecified' ? version : '1.1.0'}" // edit this for manual version
     buildNumber = project.hasProperty('buildNumber') ? project.property('buildNumber') : "unspesified"
     appId = project.hasProperty('appId') ? project.property('appId') : "com.dickiez.soccerhub"
     appName = project.hasProperty('appName') ? project.property('appName') : 'Soccer Hub'
+}
+
+def readVersionCode() {
+    def (val1, val2, val3) = ext.version.tokenize('.')
+    def mayor = val1 as int
+    def minor = val2 as int
+    def build = val3 as int
+    def versionCode = mayor * 10000 + minor * 1000 + build * 100
+    return versionCode
+}
+
+def readVersionName() {
+    def versionName = ext.version
+    return versionName
+}
+
+task readVersion {
+    doLast {
+        println(readVersionCode())
+    }
+}
+
+task readValue {
+    doLast {
+        println(buildNumber)
+    }
 }
 
 android {
@@ -22,14 +50,16 @@ android {
             storePassword '123456'
         }
     }
+
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.dickiez.soccerhub"
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode readVersionCode()
+        versionName readVersionName()
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.keystoresoccerhub
     }
@@ -100,4 +130,6 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0'
+
+    implementation 'com.google.firebase:firebase-core:16.0.1'
 }
